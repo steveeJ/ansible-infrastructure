@@ -1,0 +1,8 @@
+---
+- name: Install profile set
+  portage: >
+      package=@profile
+      state=installed
+      deep=yes
+      newuse=yes
+      sync=yes

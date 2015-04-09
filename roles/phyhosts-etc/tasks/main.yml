@@ -1,0 +1,5 @@
+---
+- name: Synchronize savedconfigs
+  synchronize: >
+      src={{ playbook_dir }}/files/phyhosts-etc/portage/savedconfig
+      dest=/etc/portage/

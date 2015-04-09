@@ -1,0 +1,6 @@
+[cluster-phyhosts]
+phyhost0
+phyhost2 
+
+[all:vars]
+ansible_ssh_user=root

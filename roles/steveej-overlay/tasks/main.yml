@@ -1,0 +1,10 @@
+---
+- name: Add steveej layman
+  layman:
+      name: steveeJ
+      state: updated
+- name: Make sure portage is new enough
+  portage: >
+      package=sys-apps/portage
+      update=yes
+      state=emerged

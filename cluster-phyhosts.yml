@@ -1,0 +1,7 @@
+---
+- include: init.yml
+- hosts: cluster-phyhosts
+  roles:
+      - phyhosts-profile
+      - phyhosts-etc
+      - install-profile-set

@@ -1,0 +1,15 @@
+---
+- name: Make sure layman is installed
+  portage:
+    package: app-portage/layman
+    state: installed
+  register: install_layman
+- name: Modify make.conf
+  when: install_layman|changed
+  lineinfile: 
+      dest: /etc/portage/make.conf
+      state: present
+      line: source /var/lib/layman/make.conf
+- name: Sync layman overlays
+  when: install_layman|changed
+  command: layman -Sf

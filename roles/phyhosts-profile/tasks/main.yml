@@ -1,0 +1,4 @@
+---
+- name: set phyhosts profile
+  command: eselect profile set \
+      steveeJ:cluster/linux/amd64/latest/phyhost
