@@ -1,2 +1,4 @@
 ---
 etcd_cluster_token: 6dffd854-aeda-4f3c-ad72-cc2c2a10c6e1
+etcd_root_path: "{{ playbook_dir }}/files//etcd-ca/"
+etcd_depot_path: "{{ etcd_root_path }}/.etcd-ca"
