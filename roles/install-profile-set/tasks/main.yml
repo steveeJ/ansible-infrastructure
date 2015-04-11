@@ -3,6 +3,5 @@
   portage: >
       package=@profile
       state=installed
-      deep=yes
+      update=yes
       newuse=yes
-      sync=yes

@@ -1,0 +1,3 @@
+---
+etcd_root_path: "{{ playbook_dir }}/files//etcd-ca/"
+etcd_depot_path: "{{ etcd_root_path }}/.etcd-ca"

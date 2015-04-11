@@ -1,0 +1,16 @@
+---
+- include_vars: secrets.yml
+- name: Make sure the etcd root path exists
+  file: >
+      path={{ etcd_root_path }}
+      state=directory
+- name: init etcd-ca if necessary
+  shell: >
+      creates={{ etcd_depot_path }}/ca.crt
+      chdir={{ etcd_root_path }}
+      etcd-ca init --country {{ etcd_country }} --organization {{ etcd_org }} --passphrase {{ etcd_passphrase }}
+- name:  Export certificate
+  shell: >
+      creates={{ etcd_root_path}}/ca.crt
+      chdir={{ etcd_root_path }}
+      etcd-ca export --insecure --passphrase {{ etcd_passphrase }} | tar xvf -

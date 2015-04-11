@@ -1,0 +1,19 @@
+---
+- name: Create new certificate
+  shell: >
+      creates={{ etcd_depot_path }}/{{ item }}.host.csr
+      chdir={{ etcd_root_path }}
+      etcd-ca new-cert {{ item }} --domain {{ etcd_domain }} --passphrase {{ etcd_passphrase }}
+  with_items: groups['etcd-members']
+- name: Sign certificate
+  shell: >
+      creates={{ etcd_depot_path }}/{{ item }}.host.crt
+      chdir={{ etcd_root_path }}
+      etcd-ca sign {{ item }} --passphrase {{ etcd_passphrase }}
+  with_items: groups['etcd-members']
+- name:  Export host certificate
+  shell: >
+      creates={{ etcd_root_path }}/{{ item }}.crt
+      chdir={{ etcd_root_path }}
+      etcd-ca export {{ item }} --insecure --passphrase {{ etcd_passphrase }} | tar xvf -
+  with_items: groups['etcd-members']

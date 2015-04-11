@@ -5,6 +5,6 @@
       state: updated
 - name: Make sure portage is new enough
   portage: >
-      package=sys-apps/portage
-      update=yes
-      state=emerged
+      package=>=sys-apps/portage-2.2.18
+      state=installed
+      sync=yes

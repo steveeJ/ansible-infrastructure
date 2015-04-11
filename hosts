@@ -1,6 +1,16 @@
+[all:vars]
+ansible_ssh_user=root
+
 [cluster-phyhosts]
 phyhost0
 phyhost2 
 
-[all:vars]
-ansible_ssh_user=root
+[etcd-members]
+phyhost2 
+
+[etcd-proxies]
+phyhost0
+
+[etcd:children]
+etcd-members
+etcd-proxies

@@ -1,0 +1,5 @@
+---
+- name: Render etcd.env template
+  template: >
+      src=etcd.env.j2
+      dest=/etc/etcd/etcd.env
