@@ -3,3 +3,17 @@
   template: >
       src=etcd.env.j2
       dest=/etc/etcd/etcd.env
+- name: Synchronzie security files
+  copy: >
+      src={{ etcd_root_path }}/{{ item }}
+      dest=/etc/etcd/
+      owner=etcd
+      group=etcd
+      mode=440
+  with_items:
+      - ca.crt
+      - "{{ inventory_hostname }}.crt"
+      - "{{ inventory_hostname }}.key.insecure"
+- name: restart etcd
+  command: systemctl restart etcd
+

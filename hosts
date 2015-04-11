@@ -1,12 +1,9 @@
 [localhost]
 localhost
 
-[all:vars]
-ansible_ssh_user=root
-
 [cluster-phyhosts]
-phyhost0
-phyhost2 
+phyhost0 ansible_ssh_user=root
+phyhost2 ansible_ssh_user=root
 
 [etcd-members]
 phyhost2 
