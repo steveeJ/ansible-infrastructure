@@ -1,0 +1,7 @@
+---
+- name: Render fleetd.conf template
+  template: >
+      src=fleetd.conf.j2
+      dest=/etc/fleetd/fleetd.conf
+- name: restart fleetd
+  command: systemctl restart fleetd
