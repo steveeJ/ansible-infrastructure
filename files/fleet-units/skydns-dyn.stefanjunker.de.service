@@ -1,0 +1,14 @@
+[Unit]
+Description=skydns-dyn.stefanjunker.de
+
+[Service]
+ExecStart=/usr/local/bin/skydns -addr=[::0]:53 -ca-cert=/etc/etcd/ca.crt \
+    -discover=false -domain=dyn.stefanjunker.de. \
+    -hostmaster=admin@stefanjunker.de. -machines=https://127.0.0.1:2379 \
+    -nameservers=[2001:4860:4860::8888]:53,8.8.8.8:53,8.8.4.4:53 \
+    -rcache=0 -rcache-ttl=60 -round-robin=true -rtimeout=2s -scache=10000 \
+    -stubzones=false -systemd=false \
+    -tls-key=/etc/etcd/%H.key.insecure -tls-pem=/etc/etcd/%H.crt -verbose=true
+
+[X-Fleet]
+MachineMetadata="dyn.stefanjunker.de=true"
