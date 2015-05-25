@@ -1,7 +1,8 @@
 ---
-- include: init.yml
-- hosts: cluster-phyhosts
+- hosts: cluster-vms
   roles:
+      - layman
+      - steveej-overlay
       - phyhosts-profile
       - phyhosts-etc
       - install-profile-set

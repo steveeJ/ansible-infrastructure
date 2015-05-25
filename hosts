@@ -1,17 +1,24 @@
-[localhost]
-localhost
-
 [cluster-phyhosts]
 phyhost0 ansible_ssh_user=root
 phyhost2 ansible_ssh_user=root
 
-[etcd-members]
-phyhost2 
+[cluster-buildservers]
+clustervm-template ansible_ssh_user=root
+
+[cluster-vms]
+clustervm-0 ansible_ssh_user=root
+clustervm-1 ansible_ssh_user=root
+clustervm-2 ansible_ssh_user=root
+
+[etcd-members:children]
+cluster-vms
+
+[fleet-members:children]
+etcd-members
 
 [etcd-proxies]
-phyhost0
 
 [etcd:children]
-localhost
 etcd-members
 etcd-proxies
+

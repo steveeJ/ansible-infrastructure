@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: etcd-members
   tasks:
       - name: gather facts
         setup: 
@@ -12,7 +12,6 @@
 - hosts: etcd-members
   roles: 
       - etcd-member
-
 
 #- hosts: etcd-proxies
 #  roles:
