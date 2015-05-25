@@ -1,0 +1,5 @@
+---
+- include: etcd-cluster.yml
+- hosts: fleet-members
+  roles:
+      - fleet-member

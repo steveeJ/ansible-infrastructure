@@ -1,0 +1,10 @@
+---
+- name: Render fleetd.conf template
+  template: >
+      src=fleet.conf.j2
+      dest=/etc/fleet/fleet.conf
+- name: restart fleetd
+  service: >
+      name=fleet
+      enabled=yes
+      state=restarted
