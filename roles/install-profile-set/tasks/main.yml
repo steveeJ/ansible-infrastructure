@@ -5,3 +5,4 @@
       state=installed
       update=yes
       newuse=yes
+      sync=yes

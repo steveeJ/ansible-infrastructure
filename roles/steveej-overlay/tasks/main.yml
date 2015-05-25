@@ -3,8 +3,3 @@
   layman:
       name: steveeJ
       state: updated
-- name: Make sure portage is new enough
-  portage: >
-      package=>=sys-apps/portage-2.2.18
-      state=installed
-      sync=yes
