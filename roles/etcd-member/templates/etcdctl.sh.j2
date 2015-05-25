@@ -1,0 +1,6 @@
+#!/bin/bash
+ETCDCTL_PEERS="https://127.0.0.1:2379" \
+ETCDCTL_CERT_FILE=/etc/etcd/{{ inventory_hostname }}.crt \
+ETCDCTL_KEY_FILE=/etc/etcd/{{ inventory_hostname }}.key.insecure \
+ETCDCTL_CA_FILE=/etc/etcd/ca.crt \
+etcdctl "$@"

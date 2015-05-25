@@ -3,6 +3,11 @@
   template: >
       src=etcd.env.j2
       dest=/etc/etcd/etcd.env
+- name: Render etcdctl.sh template
+  template: >
+      src=etcdctl.sh.j2
+      dest=/usr/sbin/etcdctl.sh
+      mode=555
 - name: Synchronzie security files
   copy: >
       src={{ etcd_root_path }}/{{ item }}
@@ -15,5 +20,7 @@
       - "{{ inventory_hostname }}.crt"
       - "{{ inventory_hostname }}.key.insecure"
 - name: restart etcd
-  command: systemctl restart etcd
-
+  service: >
+      name=etcd
+      enabled=yes
+      state=restarted
