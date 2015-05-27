@@ -2,7 +2,7 @@
 
 # Lower the logging threshold. Acceptable values are 0, 1, and 2. A higher
 # value corresponds to a lower logging threshold.
-# verbosity=0
+# verbosity=2
 
 # Provide a custom set of etcd endpoints. The default value is determined
 # by the underlying go-etcd library.
@@ -18,12 +18,12 @@ etcd_keyfile=/etc/etcd/{{ inventory_hostname }}.key.insecure
 
 # IP address that should be published with any socket information. By default,
 # no IP address is published.
-public_ip="{{ ansible_ssh_host }}"
+#public_ip="{{ ansible_ssh_host }}"
 
 # Comma-delimited key/value pairs that are published to the fleet registry.
 # This data can be referenced in unit files to affect scheduling descisions.
 # An example could look like: metadata="region=us-west,az=us-west-1"
-# metadata=""
+metadata="ipv6={{ ansible_default_ipv6.address }}"
 
 # An Agent will be considered dead if it exceeds this amount of time to
 # communicate with the Registry. The agent will attempt a heartbeat at half
